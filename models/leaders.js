@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var leaderSchema = new Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+require('mongoose-currency').loadType(mongoose);
+const leadershipSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -13,24 +13,25 @@ var leaderSchema = new Schema({
     },
     designation: {
         type: String,
-        required: true,
+        default: ''
     },
     abbr: {
         type: String,
-        required: true,
+        required: true
     },
     description: {
         type: String,
         required: true
     },
     featured: {
-      type: Boolean,
-      required: false
-  }
+        type: Boolean,
+        default: false
+    },
 }, {
-    timestamps: true
-});
+    timestamps: true,
+    usePushEach: true
+})
 
-var Leaders = mongoose.model('Leader', leaderSchema);
+let Leaders = mongoose.model('Leadership', leadershipSchema);
 
 module.exports = Leaders;
