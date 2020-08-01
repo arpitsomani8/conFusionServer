@@ -11,7 +11,7 @@ const User = new Schema({
         type: String,
         default: ''
     },
-<<<<<<< HEAD
+
     admin:   {
         type: Boolean,
         default: false
@@ -25,7 +25,6 @@ const User = new Schema({
         default: false
     }
 })
->>>>>>> 4f32ec7... Integrating React Client and Server
 
 router.get('/facebook/token', passport.authenticate('facebook-token'), (req, res) => {
   if (req.user) {
