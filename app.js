@@ -13,6 +13,7 @@ var leaderRouter = require('./routes/leaderRouter');
 
 var app = express();
 const url = config.mongoUrl;
+const uploadRouter = require('./routes/uploadRouter');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,5 +55,6 @@ app.all('*', (req, res, next) => {
     res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
   }
 });
+app.use('/imageUpload',uploadRouter);
 
 module.exports = app;
