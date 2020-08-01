@@ -16,8 +16,6 @@ var uploadRouter = require('./routes/uploadRouter');
 var favoriteRouter = require('./routes/favoriteRouter');
 var config = require('./config');
 
-var commentRouter = require('./routes/commentRouter');
-
 const mongoose = require('mongoose');
 
 const Dishes = require('./models/dishes');
@@ -47,9 +45,6 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-
-app.use('/comments',commentRouter);
 //app.use(cookieParser('12345-67890-09876-54321'));
 
 
@@ -68,7 +63,7 @@ app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
 app.use('/imageUpload',uploadRouter);
-app.use('/favorites',favoriteRouter);
+app.use('/favorite',favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
